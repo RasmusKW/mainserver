@@ -15,6 +15,7 @@ public class mainserverCode{
 	private static int paper = 1; //integer for the variable paper 
 	private static int scissor = 2; //integer for the variable scissor 
 
+
 	//the user and computer pick don't have fixed values
 	//since the user should be able to pick his own number
 	//and the computer will pick from a random number (explained later)
@@ -22,6 +23,11 @@ public class mainserverCode{
     private static int computerPick; // integer for the computer pick
 
 	private static ServerSocket serverSocket; 
+	public static int gameResult;
+	
+	
+	
+	
 	public static void main(String[] args) {
 	
 		System.out.println("Server started");
@@ -52,7 +58,7 @@ public class mainserverCode{
 	     
 	     	//below is the main calculations of the game made through an if, else if and else statement
 	     	
-	     	//this first if statement checks if the userPick and computerPick int is set to the same value
+	     /*	//this first if statement checks if the userPick and computerPick int is set to the same value
 	     	if ( userPick==computerPick ) 
 	     	{
 	     	  //if they are equal to the same number the console will print "Draw Game"
@@ -75,11 +81,68 @@ public class mainserverCode{
 	     			System.out.println("The Computer Wins"); 
 	     					}  	 
 	       }
+	       
+	       */
+	     
+	     //TIE FOR ALL
+	     if((player1_tool == 0 && player2_tool == 0 && player3_tool == 0) ||
+	    	(player1_tool == 0 && player2_tool == 2 && player3_tool == 1) ||
+	    	(player1_tool == 0 && player2_tool == 1 && player3_tool == 2) ||
+	        (player1_tool == 1 && player2_tool == 1 && player3_tool == 1) ||
+	        (player1_tool == 1 && player2_tool == 0 && player3_tool == 2) ||
+	        (player1_tool == 1 && player2_tool == 2 && player3_tool == 0) ||
+	        (player1_tool == 2 && player2_tool == 2 && player3_tool == 2) ||
+	        (player1_tool == 2 && player2_tool == 1 && player3_tool == 0) ||
+	        (player1_tool == 2 && player2_tool == 0 && player3_tool == 1) ) {
+	    	 gameResult = 0;
+	     }
+	     
+	     //PLAYER 1 WIN
+	     if((player1_tool == 0 && player2_tool == 2 && player3_tool == 2) ||
+	    	(player1_tool == 1 && player2_tool == 0 && player3_tool == 0) ||
+	    	(player1_tool == 2 && player2_tool == 1 && player3_tool == 1) ) {
+	    	 gameResult = 1;
+	     }
+	     
+	     //PLAYER 2 WIN
+	     if((player1_tool == 0 && player2_tool == 1 && player3_tool == 0) ||
+	    	(player1_tool == 1 && player2_tool == 2 && player3_tool == 1) ||
+	    	(player1_tool == 2 && player2_tool == 0 && player3_tool == 2) ) {
+	    	 gameResult = 2;
+	     }
+	     
+	     //PLAYER 3 WIN
+	     if((player1_tool == 0 && player2_tool == 0 && player3_tool == 1) ||
+	 	    (player1_tool == 1 && player2_tool == 1 && player3_tool == 2) ||
+	 	    (player1_tool == 2 && player2_tool == 2 && player3_tool == 0) ) {
+	 	    	 gameResult = 3;
+	 	 }
+	 	     
+	     //PLAYER 2 & PLAYER 3 TIE
+	     if((player1_tool == 0 && player2_tool == 1 && player3_tool == 1) ||
+	 	 	(player1_tool == 1 && player2_tool == 2 && player3_tool == 2) ||
+	 	 	(player1_tool == 2 && player2_tool == 0 && player3_tool == 0) ) {
+	 	 	    	 gameResult = 4;
+	 	 	 }
+	     
+	     //PLAYER 1 & PLAYER 2 TIE
+	     if((player1_tool == 0 && player2_tool == 0 && player3_tool == 2) ||
+	 	 	(player1_tool == 1 && player2_tool == 1 && player3_tool == 0) ||
+	 	 	(player1_tool == 2 && player2_tool == 2 && player3_tool == 1) ) {
+	 	 	    	 gameResult = 5;
+	 	 	 }
+	     
+	     //PLAYER 1 & PLAYER 3 TIE
+	     if((player1_tool == 0 && player2_tool == 2 && player3_tool == 0) ||
+	 	 	(player1_tool == 1 && player2_tool == 0 && player3_tool == 1) ||
+	 	 	(player1_tool == 2 && player2_tool == 1 && player3_tool == 2) ) {
+	 	 	    	 gameResult = 6;
+	 	 	 }
+	   
 	    
 	    catch(IOException e) {
 	      System.err.println(e);
 	    }
 	  }
-	}
 
 }
