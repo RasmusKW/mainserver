@@ -29,10 +29,6 @@ public class mainserverCode{
 
 		try {
 
-			DataInputStream isFromServer = new DataInputStream(socket.getInputStream());
-			 DataOutputStream osToServer = new DataOutputStream(socket.getOutputStream());
-			 
-			 
 	     serverSocket = new ServerSocket(4005);
 	     
 	     Socket socket = serverSocket.accept();
